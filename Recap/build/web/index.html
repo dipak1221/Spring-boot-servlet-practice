@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <h1>This is a Recap of Servlet</h1>
+        <form action="first" method="POST" id="form1">
+           Name:  <input type="text" name="name">
+        <button type="submit" id="btn">Submit</button>
+        </form>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function () {
+                var f = "hello data";
+                console.log("I m in jQuery");
+                $('#form1').on('submit', function (event) {
+event.preventDefault();
+                  //  for (var i = 0; i < 2; i++) {
+                        $.ajax({
+                            url: 'first',
+                            data: f,
+                            type: 'GET',
+                            success: function (a, b, c) {
+                                console.log(a);
+                                console.log( " success")
+                            }
+                            ,
+                            error: function (a, b, c) {
+                                console.log("error")
+                            },
+                        });
+               //     }
+                });
+            });
+        </script>
+    </body>
+</html>
