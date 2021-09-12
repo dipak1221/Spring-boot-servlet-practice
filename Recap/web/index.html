@@ -13,7 +13,7 @@ and open the template in the editor.
     <body>
         <div>TODO write content</div>
         <h1>This is a Recap of Servlet</h1>
-        <form action="first" method="POST" id="form1">
+        <form action="RecapServlet" method="POST" id="form1">
            Name:  <input type="text" name="name">
         <button type="submit" id="btn">Submit</button>
         </form>
@@ -26,7 +26,7 @@ and open the template in the editor.
                 var f = "hello data";
                 console.log("I m in jQuery");
                 $('#form1').on('submit', function (event) {
-event.preventDefault();
+//event.preventDefault();
                   //  for (var i = 0; i < 2; i++) {
                         $.ajax({
                             url: 'first',

@@ -10,6 +10,10 @@
         <servlet-name>fourthServlet</servlet-name>
         <servlet-class>com.recap.fourthServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RecapServlet</servlet-name>
+        <servlet-class>com.recap.RecapServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>first</servlet-name>
         <url-pattern>/first</url-pattern>
@@ -36,6 +40,10 @@
     <servlet-mapping>
         <servlet-name>fourthServlet</servlet-name>
         <url-pattern>/four4</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RecapServlet</servlet-name>
+        <url-pattern>/RecapServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

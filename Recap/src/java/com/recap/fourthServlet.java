@@ -8,6 +8,7 @@ package com.recap;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,10 +36,24 @@ public class fourthServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet fourthServlet</title>");            
+            out.println("<title>Servlet fourthServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Hello dipak Welcome to FourthServlet</h1>");
+            Cookie[] arr = request.getCookies();
+            boolean flag = true;
+            if (arr.length != 0) {
+                for (Cookie e : arr) {
+                    String name = e.getName();
+                    if (name.equals("name")) {
+                        out.println("<h1>Hello Welcome to FourthServlet your Name is " + e.getValue() + "</h1>");
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            if (flag) {
+                out.println("<h1> This is no data</h1>");
+            }
             out.println("</body>");
             out.println("</html>");
         }
