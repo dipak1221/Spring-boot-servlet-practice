@@ -10,7 +10,7 @@ public class ConnectionProvider {
         try {
             if (con == null) {
                 //driver
-                Class.forName("com.mysql.jdbc.Driver");
+                Class.forName("com.mysql.cj.jdbc.Driver");
 
                 //create connection
                 String url = "jdbc:mysql://localhost:3306/technicalblog";

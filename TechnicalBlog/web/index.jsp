@@ -1,6 +1,7 @@
 <%@page import="com.technical.blog.helper.ConnectionProvider"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
+<%@page errorPage="error_page.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,6 +17,7 @@
         <title>Technical Blog</title>
     </head>
     <body>
+        <%--<%= exception %>--%>
         <!--navbar-->
         <%@include file="navbar.jsp" %>
         <div class="container-fluid p-0 m-0">
