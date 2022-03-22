@@ -1,18 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.technical.blog.servlet;
 
+import com.technical.blog.entities.Message;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.technical.blog.dao.*;
-import com.technical.blog.entities.Message;
-import com.technical.blog.entities.User;
-import com.technical.blog.helper.ConnectionProvider;
 import javax.servlet.http.HttpSession;
 
-public class loginServlet extends HttpServlet {
+/**
+ *
+ * @author Dipak
+ */
+public class logoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,41 +34,11 @@ public class loginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet loginServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-
-            String check = request.getParameter("check");
-            out.println(check);
-            if (check == null) {
-                //error 
-                out.println("pls checked the check box while logging");
-
-            } else {
-                String userEmail = request.getParameter("email");
-                String userPassword = request.getParameter("password");
-                UserDao dao = new UserDao(ConnectionProvider.getConnection());
-                User u = dao.getUserByEmailAndPassword(userEmail, userPassword);
-                if (u == null) {
-//            error
-                    Message msg = new Message("Invalid user pls try again!", "error", "alert-danger");
-
-                    HttpSession s = request.getSession();
-                    s.setAttribute("msg", msg);
-                    
-                    response.sendRedirect("login_page.jsp");
-//                    out.println("User not available");
-                } else {
-                    HttpSession s = request.getSession();
-                    s.setAttribute("currentUser", u);
-                    response.sendRedirect("profile.jsp");
-                }
-            }
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession s=request.getSession();
+            s.removeAttribute("currentUser");
+            Message m=new Message("Logout Successfully","logout","alert-info");
+            s.setAttribute("msg", m);
+            response.sendRedirect("login_page.jsp");
         }
     }
 

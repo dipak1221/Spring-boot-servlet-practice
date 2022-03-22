@@ -45,6 +45,26 @@ public class UserDao {
         return f;
     }
 
+    public boolean editUser(User user) {
+        boolean status = false;
+        try {
+            String query = "Update user set name=?, email=? ,password=? , gender=? , about=?,profile=?, rdate=now() where id=?";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, user.getName());
+            pstmt.setString(2, user.getEmail());
+            pstmt.setString(3, user.getPassword());
+            pstmt.setString(4, user.getGender());
+            pstmt.setString(5, user.getAbout());
+            pstmt.setString(6, user.getProfile());
+            pstmt.setInt(7, user.getId());
+            pstmt.executeUpdate();
+            status = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return status;
+    }
+
     /**
      *
      * @param email
@@ -67,6 +87,7 @@ public class UserDao {
                 user.setEmail(set.getString("email"));
                 user.setGender(set.getString("gender"));
                 user.setAbout(set.getString("about"));
+                user.setPassword(set.getString("password"));
                 user.setDateTime(set.getTimestamp("rdate"));
                 user.setProfile(set.getString("profile"));
 

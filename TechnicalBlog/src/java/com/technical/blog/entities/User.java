@@ -1,5 +1,5 @@
 package com.technical.blog.entities;
-
+//here Entites class represents a table
 import java.sql.*;
 
 public class User {
@@ -13,14 +13,15 @@ public class User {
     private Timestamp dateTime;
     private String profile;
 
-    public User(int id, String name, String email, String password, String gender, String about, Timestamp dateTime) {
+    public User(int id, String name, String email, String password, String gender, String about, String profile) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.gender = gender;
         this.about = about;
-        this.dateTime = dateTime;
+        this.profile = profile;
+//        this.dateTime = dateTime;
     }
 
     public User(String name, String email, String password, String about, String gender) {
@@ -30,12 +31,13 @@ public class User {
         this.gender = gender;
         this.about = about;
     }
+
     public User(String name, String email, String password, String gender) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.gender = gender;
-       
+
     }
 
     public User() {
@@ -105,6 +107,5 @@ public class User {
     public void setProfile(String profile) {
         this.profile = profile;
     }
-    
 
 }
